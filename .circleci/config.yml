@@ -22,12 +22,12 @@ jobs:
       NEW_INSTANCE_NAME: CircleCITest
     steps:
       - aws-cli/setup:
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          aws-region: AWS_REGION
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+          aws-region: $AWS_REGION
       - add_ssh_keys:
           fingerprints:
-            - "4f:5d:f9:62:12:ac:1c:d8:d2:47:5e:6c:19:29:e6:fe"
+            - "SHA256:8xwjwg9R2Tp6KmcGSIiDNQ+ekehHpl8nD670FPJI+Zc"
       - run:
           command: sleep 1m
           name: Waiting of SSH Server to start at New EC2 Instance
