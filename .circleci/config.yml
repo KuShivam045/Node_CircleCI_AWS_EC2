@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.0.3
-  aws-cli: circleci/aws-cli@3.1.4
+  node: cimg/node:latest
+  aws-cli: cimg/aws-cli:latest
 
 jobs:
   build_and_test:
