@@ -9,6 +9,12 @@ jobs:
     executor: node/default
     steps:
       - checkout
+      - run:
+          name: Clean npm cache
+          command: npm cache clean --force
+      - run:
+          command: rm -rf node_modules package-lock.json
+          name: Remove node_modules and package-lock.json
       - node/install-packages:
           pkg-manager: npm
       - run:
