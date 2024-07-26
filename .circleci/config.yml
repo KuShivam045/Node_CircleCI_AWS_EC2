@@ -32,7 +32,7 @@ jobs:
           command: sleep 1m
           name: Waiting of SSH Server to start at New EC2 Instance
       - run:
-          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "mkdir ~/App && cd ~ && curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install nodejs && node -v"
+          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sudo mkdir ~/App && cd ~ && curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install nodejs && node -v"
           name: Performing SSH and Setting node environment
       - run:
           command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sudo npm install -g degit && cd ~/App && degit https://github.com/hiumesh/node-rest-api-jest-tests.git && npm install"
