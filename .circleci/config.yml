@@ -15,8 +15,16 @@ jobs:
       - run:
           command: rm -rf node_modules package-lock.json
           name: Remove node_modules and package-lock.json
-      - node/install-packages:
-          pkg-manager: npm
+      - run:
+          command: |
+            if [ -f package-lock.json ]; then
+              npm ci
+            else
+              npm install
+            fi
+          name: Intall npm packages
+      # - node/install-packages:
+      #     pkg-manager: npm
       - run:
           command: npm test
           name: Testing API
