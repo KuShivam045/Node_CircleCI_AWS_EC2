@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_cards_service_and_solution_cards",
+  "info": {
+    "displayName": "serviceAndSolutionCard",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

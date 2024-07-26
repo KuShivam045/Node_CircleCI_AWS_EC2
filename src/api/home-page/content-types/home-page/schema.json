@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "home-page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.hero-section"
+    },
+    "heroCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.hero-card"
+    },
+    "whoAreWe": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.who-are-we"
+    },
+    "Industries": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.industries"
+    },
+    "joinOurTeam": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.join-our-team"
+    },
+    "ourValues": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.our-values"
+    },
+    "ourValuesPoints": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.our-values-points"
+    },
+    "ourExpertiseCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.overview-card"
+    }
+  }
+}

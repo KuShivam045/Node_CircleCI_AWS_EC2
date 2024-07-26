@@ -1,0 +1,54 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.3
+  aws-cli: circleci/aws-cli@3.1.4
+
+jobs:
+  build_and_test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm test
+          name: Testing API
+
+  deploy:
+    executor: aws-cli/default
+    environment:
+      PREVIOUS_INSTANCE_NAME: CircleCITest
+      NEW_INSTANCE_NAME: CircleCITest
+    steps:
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_REGION
+      - add_ssh_keys:
+          fingerprints:
+            - "4f:5d:f9:62:12:ac:1c:d8:d2:47:5e:6c:19:29:e6:fe"
+      - run:
+          command: sleep 1m
+          name: Waiting of SSH Server to start at New EC2 Instance
+      - run:
+          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "mkdir ~/App && cd ~ && curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install nodejs && node -v"
+          name: Performing SSH and Setting node environment
+      - run:
+          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sudo npm install -g degit && cd ~/App && degit https://github.com/hiumesh/node-rest-api-jest-tests.git && npm install"
+          name: Cloning the project
+      - run:
+          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "touch stater.sh && echo 'cd ~/App && npm start disown &' > stater.sh"
+          name: Creating a stater script
+      - run:
+          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sh stater.sh >/dev/null 2>&1 &"
+          name: Starting Server
+workflows:
+  test_my_app:
+    jobs:
+      - build_and_test
+      - deploy:
+          requires:
+            - build_and_test
+          context:
+            - CircleCITest

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_feature_box_images",
+  "info": {
+    "displayName": "image",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "heroImages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

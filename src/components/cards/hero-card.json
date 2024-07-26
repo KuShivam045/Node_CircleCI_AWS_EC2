@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_cards_hero_cards",
+  "info": {
+    "displayName": "heroCard",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "text"
+    },
+    "ourSaasProductCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.our-values"
+    }
+  }
+}

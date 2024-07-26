@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_solutions_pages",
+  "info": {
+    "singularName": "service-solutions-page",
+    "pluralName": "service-solutions-pages",
+    "displayName": "service-solutions-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.hero-section"
+    },
+    "overview": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.overview"
+    },
+    "ourExpertiseCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.overview-card"
+    },
+    "serviceAndSolutionCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.service-and-solution-card"
+    }
+  }
+}

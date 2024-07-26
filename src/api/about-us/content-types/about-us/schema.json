@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_uses",
+  "info": {
+    "singularName": "about-us",
+    "pluralName": "about-uses",
+    "displayName": "About-us",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "aboutUsheroSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.hero-section"
+    },
+    "AboutUs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.who-are-we"
+    },
+    "OurExpertise": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.who-are-we"
+    },
+    "ExpertiseCards": {
+      "displayName": "ExpertiseCard",
+      "type": "component",
+      "repeatable": true,
+      "component": "expertise-card.expertise-card"
+    },
+    "ExpertiseText": {
+      "type": "text"
+    },
+    "ourVision": {
+      "type": "component",
+      "repeatable": false,
+      "component": "expertise-card.expertise-card"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partneship_pages",
+  "info": {
+    "singularName": "partneship-page",
+    "pluralName": "partneship-pages",
+    "displayName": "partnership-page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.hero-section"
+    },
+    "overview": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.overview"
+    },
+    "ourExpertiseCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.overview-card"
+    },
+    "ourPartner": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.our-partners"
+    },
+    "ourSuccessStoryCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.our-success-story-card"
+    }
+  }
+}

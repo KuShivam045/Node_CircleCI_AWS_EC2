@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_headings",
+  "info": {
+    "displayName": "heading",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "isVisible": {
+      "type": "boolean"
+    },
+    "fontSize": {
+      "type": "string"
+    }
+  }
+}

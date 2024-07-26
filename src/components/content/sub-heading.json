@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_sub_headings",
+  "info": {
+    "displayName": "SubHeading",
+    "icon": "strikeThrough"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    }
+  }
+}

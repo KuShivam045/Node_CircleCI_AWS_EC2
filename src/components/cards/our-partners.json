@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_cards_our_partners",
+  "info": {
+    "displayName": "ourPartners",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "comment": {
+      "type": "text"
+    },
+    "link": {
+      "type": "text"
+    },
+    "linkUrl": {
+      "type": "text"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

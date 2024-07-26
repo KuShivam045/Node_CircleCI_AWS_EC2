@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_section_industries",
+  "info": {
+    "displayName": "Industries",
+    "icon": "briefcase",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "industriesCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.industry-cards"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

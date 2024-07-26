@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "career_pages",
+  "info": {
+    "singularName": "career-page",
+    "pluralName": "career-pages",
+    "displayName": "career-page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "heroSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.hero-section"
+    },
+    "careerCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.career-cards"
+    }
+  }
+}

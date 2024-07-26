@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_cards_career_cards",
+  "info": {
+    "displayName": "career-cards",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

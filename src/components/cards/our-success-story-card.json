@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_cards_our_success_story_cards",
+  "info": {
+    "displayName": "ourSuccessStoryCard",
+    "icon": "command",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "name": {
+      "type": "text"
+    },
+    "designation": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

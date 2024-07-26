@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_content_descriptions",
+  "info": {
+    "displayName": "Description",
+    "icon": "strikeThrough",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "text"
+    }
+  }
+}
