@@ -22,9 +22,9 @@ jobs:
       NEW_INSTANCE_NAME: CircleCITest
     steps:
       - aws-cli/setup:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
-          aws-region: $AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_REGION
       - add_ssh_keys:
           fingerprints:
             - "SHA256:8xwjwg9R2Tp6KmcGSIiDNQ+ekehHpl8nD670FPJI+Zc"
