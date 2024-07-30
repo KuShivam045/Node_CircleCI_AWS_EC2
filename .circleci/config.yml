@@ -1,68 +1,41 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@5.2.0
-  aws-cli: circleci/aws-cli@4.1.3
+executors:
+  node-executor:
+    docker:
+      - image: node:latest
 
 jobs:
-  build_and_test:
-    executor: node/default
+  build_and_deploy:
+    executor: node-executor
     steps:
       - checkout
       - run:
-          name: Clean npm cache
-          command: npm cache clean --force
+          name: Install dependencies
+          command: npm ci
       - run:
-          command: rm -rf node_modules package-lock.json
-          name: Remove node_modules and package-lock.json
+          name: Build project
+          command: npm run build
       - run:
+          name: Transfer build files
           command: |
-            if [ -f package-lock.json ]; then
-              npm ci
-            else
-              npm install
-            fi
-          name: Intall npm packages
-      # - node/install-packages:
-      #     pkg-manager: npm
+            scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
       - run:
-          command: npm test
-          name: Testing API
+          name: Execute remote commands
+          command: |
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "echo 'pipeline completed'"
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "bash /home/ubuntu/pot.sh > ~/develop/test.txt"
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "sudo netstat -tnlp > ~/develop/netstat_.txt"
+      - run:
+          name: Cleanup
+          command: echo "Build and deployment completed successfully for the React App. Cleaning up..."
+
+workflows:
 
   deploy:
-    executor: aws-cli/default
-    environment:
-      PREVIOUS_INSTANCE_NAME: CircleCITest
-      NEW_INSTANCE_NAME: CircleCITest
-    steps:
-      - aws-cli/setup:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
-          aws-region: $AWS_REGION
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:8xwjwg9R2Tp6KmcGSIiDNQ+ekehHpl8nD670FPJI+Zc"
-      - run:
-          command: sleep 1m
-          name: Waiting of SSH Server to start at New EC2 Instance
-      - run:
-          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sudo mkdir ~/App && cd ~ && curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install nodejs && node -v"
-          name: Performing SSH and Setting node environment
-      - run:
-          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sudo npm install -g degit && cd ~/App && degit https://github.com/hiumesh/node-rest-api-jest-tests.git && npm install"
-          name: Cloning the project
-      - run:
-          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "touch stater.sh && echo 'cd ~/App && npm start disown &' > stater.sh"
-          name: Creating a stater script
-      - run:
-          command: ssh -o StrictHostKeyChecking=accept-new -i $HOME/.ssh/id_rsa_4f5df96212ac1cd8d2475e6c1929e6fe ubuntu@$NEW_INSTANCE_IP "sh stater.sh >/dev/null 2>&1 &"
-          name: Starting Server
-workflows:
-  test_my_app:
     jobs:
-      - build_and_test
-      - deploy:
-          requires:
-            - build_and_test
-          context:
-            - CircleCITest
+      - build_and_deploy:
+          filters:
+            branches:
+              only:
+                - develop
