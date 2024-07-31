@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node-executor:
     docker:
-      - image: node:latest
+      - image: node:18
 
 jobs:
   deploy:
