@@ -20,8 +20,8 @@ jobs:
           name: Listing Build project
           command: |
               ls -la
-              sudo chown -R $user:$user build
-
+              chown -R $user:$user build
+              chmod -R 755 build
 
       - run:
           name: Transfer build files
