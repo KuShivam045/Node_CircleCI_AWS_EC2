@@ -18,7 +18,10 @@ jobs:
           command: npm run build
       - run:
           name: Listing Build project
-          command: ls -la
+          command: |
+              ls -la
+              sudo chown -R $user:$user build
+
 
       - run:
           name: Transfer build files
