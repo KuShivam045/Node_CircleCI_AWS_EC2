@@ -18,7 +18,7 @@ jobs:
           command: npm run build
       - run:
           name: Listing Build project
-          command: ls -l build
+          command: ls -la
 
       - run:
           name: Transfer build files
