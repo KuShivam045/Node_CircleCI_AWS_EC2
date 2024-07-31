@@ -6,7 +6,7 @@ executors:
       - image: node:latest
 
 jobs:
-  build_and_deploy:
+  deploy:
     executor: node-executor
     steps:
       - checkout
@@ -31,11 +31,10 @@ jobs:
           command: echo "Build and deployment completed successfully for the React App. Cleaning up..."
 
 workflows:
-  version: 2
-  deploy:
+  build_and_deploy:
     jobs:
-      - build_and_deploy:
+      - deploy:
           filters:
             branches:
               only:
-                - develop
+                - main
