@@ -31,7 +31,7 @@ jobs:
           command: echo "Build and deployment completed successfully for the React App. Cleaning up..."
 
 workflows:
-
+  version: 2
   deploy:
     jobs:
       - build_and_deploy:
