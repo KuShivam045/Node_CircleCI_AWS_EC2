@@ -20,8 +20,7 @@ jobs:
           name: Listing Build project
           command: |
               ls -la
-              chown -R $user:$user build
-              chmod -R 755 build
+              echo "Current user: $(whoami)"
 
       - run:
           name: Transfer build files
