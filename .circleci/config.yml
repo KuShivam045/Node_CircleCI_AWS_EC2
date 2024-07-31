@@ -17,8 +17,12 @@ jobs:
           name: Build project
           command: npm run build
       - run:
+          name: Listing Build project
+          command: ls -l build
+
+      - run:
           name: Transfer build files
-          command: |
+          command: |  
             scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
       - run:
           name: Execute remote commands
