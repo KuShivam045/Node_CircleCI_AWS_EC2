@@ -14,6 +14,11 @@ jobs:
           name: Install dependencies
           command: npm ci
       - run:
+          name: Install dependencies
+          command: |
+            touch .env
+            echo $prod > .env
+      - run:
           name: Build project
           command: npm run build
       - run:
@@ -26,7 +31,7 @@ jobs:
           name: Transfer build files
           command: |  
             # scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
-            scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/home/ubuntu/develop/
+            scp -o StrictHostKeyChecking=no -r ./* $user@$instance_ip:/home/ubuntu/develop/
       - run:
           name: Execute remote commands
           command: |
