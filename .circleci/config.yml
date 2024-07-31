@@ -25,7 +25,8 @@ jobs:
       - run:
           name: Transfer build files
           command: |  
-            scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
+            # scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
+            scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/home/ubuntu/develop/
       - run:
           name: Execute remote commands
           command: |
