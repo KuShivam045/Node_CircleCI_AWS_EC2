@@ -10,17 +10,12 @@ jobs:
     executor: node-executor
     steps:
       - checkout
-      # - run:
-      #     name: Install dependencies
-      #     command: npm ci
       - run:
           name: Create env
           command: |
             touch .env
             echo $prod > .env
-      # - run:
-      #     name: Build project
-      #     command: npm run build
+      
       - run:
           name: Listing project file
           command: |
@@ -39,6 +34,7 @@ jobs:
           name: Build project
           command: |  
             ssh -o StrictHostKeyChecking=no $user@$instance_ip "cd /home/ubuntu/develop/ && npm run build"
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "cd /home/ubuntu/develop/ && pm2 restart 0"
       - run:
           name: Execute remote commands
           command: |
