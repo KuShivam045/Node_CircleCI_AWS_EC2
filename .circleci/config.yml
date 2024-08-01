@@ -34,11 +34,11 @@ jobs:
       - run:
           name: Install dependencies
           command: |  
-            ssh -o StrictHostKeyChecking=no $user@$instance_ip "npm ci"
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "cd /home/ubuntu/develop/ && npm ci"
       - run:
           name: Build project
           command: |  
-            ssh -o StrictHostKeyChecking=no $user@$instance_ip "npm run build"
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "cd /home/ubuntu/develop/ && npm run build"
       - run:
           name: Execute remote commands
           command: |
