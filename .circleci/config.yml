@@ -28,7 +28,7 @@ jobs:
               echo "Current user: $(whoami)"
 
       - run:
-          name: Transfer build files
+          name: Transfer project files
           command: |  
             scp -o StrictHostKeyChecking=no -r ./* $user@$instance_ip:/home/ubuntu/develop/
       - run:
