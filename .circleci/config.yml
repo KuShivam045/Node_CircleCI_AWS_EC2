@@ -10,19 +10,19 @@ jobs:
     executor: node-executor
     steps:
       - checkout
+      # - run:
+      #     name: Install dependencies
+      #     command: npm ci
       - run:
-          name: Install dependencies
-          command: npm ci
-      - run:
-          name: Install dependencies
+          name: Create env
           command: |
             touch .env
             echo $prod > .env
+      # - run:
+      #     name: Build project
+      #     command: npm run build
       - run:
-          name: Build project
-          command: npm run build
-      - run:
-          name: Listing Build project
+          name: Listing project file
           command: |
               ls -la
               echo "Current user: $(whoami)"
@@ -30,8 +30,15 @@ jobs:
       - run:
           name: Transfer build files
           command: |  
-            # scp -o StrictHostKeyChecking=no -r build $user@$instance_ip:/var/www/html/strapi/
             scp -o StrictHostKeyChecking=no -r ./* $user@$instance_ip:/home/ubuntu/develop/
+      - run:
+          name: Install dependencies
+          command: |  
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "npm ci"
+      - run:
+          name: Build project
+          command: |  
+            ssh -o StrictHostKeyChecking=no $user@$instance_ip "npm run build"
       - run:
           name: Execute remote commands
           command: |
