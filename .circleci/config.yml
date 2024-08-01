@@ -14,12 +14,13 @@ jobs:
           name: Create env
           command: |
             touch .env
+            echo $prod 
             echo $prod > .env
       
       - run:
           name: Listing project file
           command: |
-              ls -la
+              cat waste.txt
               cat .env
               echo "Current user: $(whoami)"
 
