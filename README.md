@@ -7,8 +7,6 @@ This project automates the deployment of a Strapi application using CircleCI. Th
 - **CircleCI account**: Ensure you have an active CircleCI account connected to your GitHub repository.
 - **Remote Server**: A remote server with SSH access to deploy the application.
 - **Environment Variables**: Configure the following environment variables in your CircleCI project settings:
-  - `HOST`: The hostname or IP address of your remote server.
-  - `port`: The port number for your application.
   - `user`: SSH user for your remote server.
   - `instance_ip`: IP address of your remote server.
 
