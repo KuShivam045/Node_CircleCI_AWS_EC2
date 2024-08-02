@@ -1,61 +1,30 @@
-# 🚀 Getting started with Strapi
+# Project Name
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This project automates the deployment of a Strapi application using CircleCI. The pipeline is configured to pull source code from GitHub, transfer it to a remote server, install dependencies, build the project, and restart the server.
 
-### `develop`
+## Prerequisites
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- **CircleCI account**: Ensure you have an active CircleCI account connected to your GitHub repository.
+- **Remote Server**: A remote server with SSH access to deploy the application.
+- **Environment Variables**: Configure the following environment variables in your CircleCI project settings:
+  - `HOST`: The hostname or IP address of your remote server.
+  - `port`: The port number for your application.
+  - `user`: SSH user for your remote server.
+  - `instance_ip`: IP address of your remote server.
 
-```
-npm run develop
-# or
-yarn develop
-```
+## Pipeline Steps
+- **Checkout: Pulls the latest code from the main branch.
+- **Create env: Creates an .env file with environment variables.
+- **Listing project file: Lists project files and prints the current user.
+- **Transfer project files: Transfers project files to the remote server.
+- **Install dependencies: Installs project dependencies on the remote server.
+- **Build project: Builds the project and restarts the server using PM2.
+- **Execute remote commands: Executes additional remote commands for logging.
+- **Cleanup: Indicates that the build and deployment process is complete.
 
-### `start`
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## How to Use
+- Fork the repository: Fork this GitHub repository to your own account.
+- Configure CircleCI: Link your GitHub repository to CircleCI.
+- Set environment variables: Set the required environment variables in CircleCI project settings.
+- Commit changes: Push your changes to the main branch to trigger the pipeline.
